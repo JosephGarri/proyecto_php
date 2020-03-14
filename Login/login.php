@@ -86,7 +86,7 @@
                     </div>
                     <div>
                         <br>
-                     <div class="midiv"><a href="">register now</a><br> <a href=""> Olvido la contraseña</a></div>
+                     <div class="midiv"><a href="/index/registro.php">register now</a><br> <a href=""> Olvido la contraseña</a></div>
                     </div>
                     
 
