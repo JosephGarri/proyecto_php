@@ -43,15 +43,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="/proyecto_php/index/shop.php">RETURN</a>
+        <a class="navbar-brand" href="/index/shop.php">RETURN</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/proyecto_php/index/shop.php">Shop</a></li>
-          <li><a href="/proyecto_php/index/about.php">My products</a></li>
-          <li><a href="/proyecto_php/index/works.php" class="smoothscroll">Works</a></li>
+          <li><a href="/index/shop.php">Shop</a></li>
+          <li><a href="/index/about.php">My products</a></li>
+          <li><a href="/index/works.php" class="smoothscroll">Works</a></li>
           <li class="active"><a href="/proyecto_php/index/contact.php" class="smoothscroll">Contact</a></li>
-          <li style="margin-left: 200px"><a href="/proyecto_php/Login/login.php" class="smoothscroll">Logout</a></li>
+          <li style="margin-left: 200px"><a href="/Login/login.php" class="smoothscroll">Logout</a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->

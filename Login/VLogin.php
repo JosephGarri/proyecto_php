@@ -7,25 +7,42 @@ class VLogin
     {
         $this->request = $request;
     }
-    private function conexion():mysqli
+  
+    public function verificar(): bool
     {
         $conn = mysqli_connect("database", "root", "", "DBTienda");
 
         if (!$conn) {
-         return die("Connection failed: " . mysqli_connect_error());
-        }
-        return $conn;
-    }
-    public function verificar(): bool
-    {
+          die("Connection failed: " . mysqli_connect_error());
+        } 
 
         $email = $_POST['email'] ?? null;
         $password = $_POST['pass'] ?? null;
-        if ($email == 'joseph.rd09@gmail.com' && $password == '1234') {
+
+        $consulta = "SELECT * FROM users WHERE email='$email' AND password='$password' ";
+        $ejecutar = mysqli_query($conn, $consulta);
+
+        $i = 0;
+        $BDid =null;
+        $BDusuario=null;
+        $BDpassword=null;
+        $BDemail=null;
+        while ($fila = mysqli_fetch_array($ejecutar)) {
+            $BDid = $fila['id'];
+            $BDusuario = $fila['name'];
+            $BDpassword = $fila['password'];
+            $BDemail = $fila['email'];
+
+            $i++;
+                }
+        //   var_dump($ejecutar);
+        if ($email==$BDemail && $password==$BDpassword) {
             return  false;
+            
         } else {
             return true;
             header('Location: index.php');
         }
+         
     }
 }

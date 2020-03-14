@@ -75,7 +75,7 @@
                     <?php endif; ?>
 
                     <?php if ($redirect == false) {
-                        header('Location: /proyecto_php/index/shop.php');
+                        header('Location: /index/shop.php');
                     } ?>
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
