@@ -2,7 +2,7 @@ name: proyecto
 recipe: lamp
 proxy:
   dbms:
-    - dbms-phpfbb.lndo.site
+    - dbms-proyecto.lndo.site
 config:
   webroot: .
 services:
