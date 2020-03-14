@@ -65,9 +65,7 @@
                     <div class="text-right p-t-8 p-b-31">
 
                     </div>
-                    <div class="midiv"><a href="">Olvido la contraseña</a></div>
-                    <div>
-                    </div>
+                   
                     <?php if ($vincorrecto == true) : ?>
                         <div style="color: black; background-color: #FF4141" id="alerta" name="alerta" class="alert alert-danger wrap-input100 validate-input m-b-23" role="alert">
                             INCORRECT DATA
@@ -86,8 +84,11 @@
                             </button>
                         </div>
                     </div>
-
-
+                    <div>
+                        <br>
+                     <div class="midiv"><a href="">register now</a><br> <a href=""> Olvido la contraseña</a></div>
+                    </div>
+                    
 
                 </form>
             </div>
