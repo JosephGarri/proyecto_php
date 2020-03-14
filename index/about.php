@@ -23,12 +23,7 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-    Template Name: Instant
-    Template URL: https://templatemag.com/instant-bootstrap-personal-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
+
 </head>
 
 <body>

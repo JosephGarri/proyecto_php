@@ -24,12 +24,10 @@ class VLogin
 
         $i = 0;
         $BDid =null;
-        $BDusuario=null;
         $BDpassword=null;
         $BDemail=null;
         while ($fila = mysqli_fetch_array($ejecutar)) {
             $BDid = $fila['id'];
-            $BDusuario = $fila['name'];
             $BDpassword = $fila['password'];
             $BDemail = $fila['email'];
 
@@ -38,7 +36,7 @@ class VLogin
         //   var_dump($ejecutar);
         if ($email==$BDemail && $password==$BDpassword) {
             return  false;
-            
+
         } else {
             return true;
             header('Location: index.php');
