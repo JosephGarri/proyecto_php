@@ -34,7 +34,7 @@
     $vincorrecto = false;
     $redirect = true;
     if ('POST' == $_SERVER['REQUEST_METHOD']) { //verifica el request
-        require '/clases/VLogin.php';       // se trae el archivo de la clase
+        require 'clases/VLogin.php';       // se trae el archivo de la clase
         $validar = new VLogin($_SERVER);   // instancia la clase del archivo php con el request
         $vincorrecto = $validar->verificar();   //igualo lo que devuelve el metodo a una variable
         $redirect = $validar->verificar();

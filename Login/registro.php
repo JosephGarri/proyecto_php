@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,18 +32,31 @@
 
 <body style="background-image: url(/Login/images/back1.jpg)">
 
-        <?php
-        $inserto = false;
-        $passIncorrecta = false;
-        if ('POST' == $_SERVER['REQUEST_METHOD']) {
-          require '/clases/registro.php';       
-          $registro = new clsRegistro($_SERVER);   
-          $inserto = $registro->ingresar_usuario();
-        
-        }
+<?php 
 
-        ?>
-    
+  $name= "";
+  $email="";
+  $pass1="";
+  $pass2="";
+  $inserto = false;
+  if(isset($_POST['registrar'])){
+    $name= $_POST['name'];
+    $email=$_POST['email'];
+    $pass1=$_POST['pass1'];
+    $pass2=$_POST['pass2'];
+
+     if($pass1==$pass2){
+    if ('POST' == $_SERVER['REQUEST_METHOD']) {
+    require 'clases/registro.php';       
+      $registro = new clsRegistro($_SERVER);   
+      $inserto = $registro->ingresar_usuario();
+   }
+  }
+  }
+ 
+  
+  ?>
+      
 
 
     <div class="limiter">
@@ -55,23 +69,23 @@
 
                     <div class="wrap-input100 validate-input" data-validate="Type yor name">
                         <span class="label-input100">Name*</span>
-                        <input class="input100" type="text" name="name" placeholder="Type your name">
+                        <input class="input100" type="text" name="name" placeholder="Type your name" value="<?php echo$name;?>">
                         <span class="focus-input100" data-symbol="&#128100;"></span>
                     </div>
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Email is required">
                         <span class="label-input100">Email*</span>
-                        <input class="input100" type="email" name="name" placeholder="Type your email">
+                        <input class="input100" type="email" name="email" placeholder="Type your email" value="<?php echo$email;?>">
                         <span class="focus-input100" data-symbol="&#64;"></span>
                     </div>
                   
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
                         <span class="label-input100">New Password*</span>
-                        <input class="input100" type="password" name="pass" placeholder="Type your new password">
+                        <input class="input100" type="password" name="pass1" id="pass1" placeholder="Type your new password" value="<?php echo$pass1;?>">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <div class="wrap-input100 validate-input" data-validate="Please confirm your Password">
                         <span class="label-input100">Conrfirm your Password</span>
-                        <input class="input100" type="password" name="pass" placeholder="Conrfirm your password please">
+                        <input class="input100" type="password" name="pass2" id="pass2" placeholder="Confirm your password please" value="<?php echo$pass2;?>">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
 
@@ -82,7 +96,7 @@
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
 
-                            <button type="submit" class="login100-form-btn" onclick="ocultar()">
+                            <button name="registrar" type="submit" class="login100-form-btn" onclick="verificar()">
                                 Register
                             </button>
                         </div>
@@ -98,16 +112,8 @@
         </div>
     </div>
 
-
   
-    <script languague="javascript">
-        function ocultar() {
-
-            div = document.getElementById('alerta');
-            div.style.display = 'none';
-
-        }
-    </script>
+  
 
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

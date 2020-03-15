@@ -14,7 +14,7 @@ class clsRegistro
 
             $name=$_REQUEST['name'];
             $email=$_REQUEST['email'];
-            $pass=$_REQUEST['password'];
+            $pass=$_REQUEST['pass1'];
             $tipo='cliente';
 
             $conn = mysqli_connect("database", "root", "", "DBTienda");
