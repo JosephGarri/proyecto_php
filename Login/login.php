@@ -42,9 +42,9 @@
 
     ?>
     <div class="limiter">
-        <div class="container-login100" style="background-image: url('images/back.jpg');">
+        <div class="container-login100">
             <div onclick="ocultar()" class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form" method="post">
+                <form class="login100-form validate-form" method="POST">
                     <span class="login100-form-title p-b-49">
                         Login
                     </span>
@@ -65,7 +65,7 @@
                     <div class="text-right p-t-8 p-b-31">
 
                     </div>
-                   
+
                     <?php if ($vincorrecto == true) : ?>
                         <div style="color: black; background-color: #FF4141" id="alerta" name="alerta" class="alert alert-danger wrap-input100 validate-input m-b-23" role="alert">
                             INCORRECT DATA
@@ -86,9 +86,9 @@
                     </div>
                     <div>
                         <br>
-                     <div class="midiv"><a href="/index/registro.php">register now</a><br> <a href=""> Olvido la contraseña</a></div>
+                        <div class="midiv"><a href="/index/registro.php">register now</a></div>
                     </div>
-                    
+
 
                 </form>
             </div>
