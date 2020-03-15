@@ -43,15 +43,15 @@
               <div class="validate"></div>
             </div>
             <div class="form-group">
-              <label for="password">New Password*</label><input type="password" name="password" class="form-control"  placeholder="Please enter your new password" data-rule="minlen:8" data-msg="Please enter a valid password with at least 8 characters">
+              <label for="password">New Password*</label><input type="password" name="password" class="form-control"  placeholder="Please enter your new password" data-rule="minlen:4" data-msg="Please enter a valid password with at least 4 characters">
               <div class="validate"></div>
             </div>
             <div class="form-group">
-             <label for="confirm_password">Confirm Password*</label> <input type="password" name="confirm_password" class="form-control"  data-rule="minlen:8"  placeholder="Please cornfirm your new password"  data-msg="Please re-enter your new password">
+             <label for="confirm_password">Confirm Password*</label> <input type="password" name="confirm_password" class="form-control"  data-rule="minlen:4"  placeholder="Please cornfirm your new password"  data-msg="Please re-enter your new password">
               <div class="validate"></div>
             </div>
 
-            <div class="form-send">
+            <div >
               <button type="submit" name="registrar" class="btn btn-large">Register</button>
             </div>
 <?php
