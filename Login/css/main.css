@@ -39,7 +39,8 @@
 
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+  font-family: Poppins-Regular, sans-serif;
+  
 }
 
 /*---------------------------------------------*/
@@ -182,6 +183,14 @@ iframe {
 
 .wrap-login100 {
   width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+.wrap-register100 {
+  width: 700px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
