@@ -16,8 +16,8 @@ class VLogin
           die("Connection failed: " . mysqli_connect_error());
         } 
 
-        $email = $_POST['email'] ?? null;
-        $password = $_POST['pass'] ?? null;
+        $email = $_REQUEST['email'] ?? null;
+        $password = $_REQUEST['pass'] ?? null;
 
         $consulta = "SELECT * FROM users WHERE email='$email' AND password='$password' ";
         $ejecutar = mysqli_query($conn, $consulta);
@@ -39,7 +39,7 @@ class VLogin
 
         } else {
             return true;
-            header('Location: index.php');
+            
         }
          
     }

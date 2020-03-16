@@ -38,6 +38,10 @@
   $pass1 = "";
   $pass2 = "";
   $inserto = false;
+  $contras = false;
+  $_REQUEST['email_existe'] = false;
+
+  
   if (isset($_POST['registrar'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -49,7 +53,21 @@
         require 'clases/registro.php';
         $registro = new clsRegistro($_SERVER);
         $inserto = $registro->ingresar_usuario();
+        if( $_REQUEST['email_existe'] == true){
+          $name = $_POST['name'];
+          $email = $_POST['email'];
+          $pass1 = $_POST['pass1'];
+          $pass2 = $_POST['pass2'];
+        }else{
+       $name = "";
+        $email = "";
+        $pass1 = "";
+        $pass2 = "";
+        }
+      
       }
+    } else {
+      $contras = true;
     }
   }
 
@@ -91,18 +109,49 @@
           <div class="text-right p-t-8 p-b-31">
 
           </div>
+          <?php
+          if ($_REQUEST['email_existe'] == true) {
+          ?>
+            <div class="alert alert-warning" id="alerta" role="alert">
+              <h4>❌
+                the email already exists</h4>
+            </div>
+          <?php
+          }
+          ?>
+          <?php
+          if ($contras == true) {
+          ?>
+            <div class="alert alert-warning" id="alerta" role="alert">
+              <h4>❌Passwords do not match</h4>
+            </div>
+          <?php
+          }
+          ?>
+          <?php
+          if ($inserto == true) {
+          ?>
+            <div data-symbol="&#10004;" class="alert alert-success" role="alert" id="alerta">
+              <h4> Registered user successfully ✔ </h4>
+            </div>
+          <?php
+
+          }
+          ?>
           <div class="container-login100-form-btn">
             <div class="wrap-login100-form-btn">
               <div class="login100-form-bgbtn"></div>
 
-              <button name="registrar" type="submit" class="login100-form-btn" onclick="verificar()">
+              <button name="registrar" type="submit" class="login100-form-btn">
                 Register
               </button>
             </div>
           </div>
           <div>
             <br>
-
+            <div style="margin-left: 150px" class="midiv"><a href="login.php" data-symbol="">
+                <h5>← return to login</h5>
+              </a></div>
           </div>
 
 
@@ -111,7 +160,14 @@
     </div>
   </div>
 
+  <script languague="javascript">
+    function ocultar() {
 
+      div = document.getElementById('alerta');
+      div.style.display = 'none';
+
+    }
+  </script>
 
 
   <!--===============================================================================================-->
