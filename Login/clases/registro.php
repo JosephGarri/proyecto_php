@@ -1,9 +1,9 @@
 <?php
- require "Vlogin.php";
+ require "VLogin.php";
 class clsRegistro
 {
     protected $request;
-    public $objeto = new Vlogin($_POST);
+   
 
 
     public function __construct($request)
@@ -13,7 +13,8 @@ class clsRegistro
    
     public function ingresar_usuario(): bool
     {
-    $this->objeto->conexion();
+   $objeto = new Vlogin($this->request);
+    $objeto->conexion();
 
             $name=$_REQUEST['name'];
             $email=$_REQUEST['email'];
