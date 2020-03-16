@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Index</title>
@@ -23,7 +24,7 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
-  
+
 </head>
 
 <body>
@@ -33,11 +34,11 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="/index/shop.php">RETURN</a>
       </div>
       <div class="navbar-collapse collapse">
@@ -59,8 +60,8 @@
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
           <h4>HELLO PEOPLE, WELCOME TO</h4>
-          <h1>JURUDU STORE</h1>
-          <h4>YOU WILL FIND WHAT YOU ARE LOOKING FOR</h4>
+          <h1>AMAZON STORE</h1>
+          <h4>DONDE TUS COMPRAS LLEGAN VOLANDO POR LO RAPIDOS QUE SOMOS</h4>
         </div>
       </div>
     </div>
@@ -121,13 +122,13 @@
 
   <div id="copyrights">
     <div class="container">
-      
+
       <div class="credits">
-       
+
       </div>
     </div>
   </div>
- 
+
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -138,4 +139,5 @@
   <script src="js/main.js"></script>
 
 </body>
+
 </html>
