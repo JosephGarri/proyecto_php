@@ -1,13 +1,14 @@
 <?php
-
+ 
 class clsRegistro
 {
     protected $request;
+    public $conn;
     public function __construct($request)
     {
         $this->request = $request;
     }
-
+   
     public function ingresar_usuario(): bool
     {
        
@@ -54,4 +55,5 @@ class clsRegistro
            
         
     }
+    
 }

@@ -7,9 +7,7 @@
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+ 
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
@@ -43,7 +41,7 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/index/shop.php">Shop</a></li>
-          <li class="active"><a href="/index/about.php">My products</a></li>
+          <li class="active"><a href="/index/productos.php">My products</a></li>
           <li><a href="/index/works.php" class="smoothscroll">Works</a></li>
           <li><a href="/index/contact.php" class="smoothscroll">Contact</a></li>
           <li style="margin-left: 200px"><a href="/Login/login.php" class="smoothscroll">Logout</a></li>
@@ -54,7 +52,7 @@
   </div>
 
 
-  <div id="aboutwrap">
+  <div id="aboutwrap" class="aboutwrap">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
