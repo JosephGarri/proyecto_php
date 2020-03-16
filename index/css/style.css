@@ -215,7 +215,8 @@ h1, h2, h3, h4, h5, h6 {
 	background: url(/index/img/about.jpg) center top;
 	margin-top: -70px;
 	padding-top: 250px;
-	text-align:center;
+  text-align:center;
+  
 	background-attachment: relative;
 	background-position: center center;
 	min-height: 550px;
@@ -231,7 +232,15 @@ h1, h2, h3, h4, h5, h6 {
     -o-background-size: cover;
     background-size: cover;
 }
-
+#aboutwrap h1 {
+	color:#fff;
+	padding-top: 1px;
+	padding-bottom: 30px;
+	letter-spacing: 4px;
+	font-size: 50px;
+  font-weight: bold;
+  
+}
 
 /* Gallery */
 .gallery {
@@ -282,7 +291,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contact-form label {
-   color: #999;
+   color: rgb(7, 6, 6);
 }
 
 .contact-form input, .contact-form textarea {
@@ -291,6 +300,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: none;
   font-size: 14px;
   height: auto;
+  color:rgb(7, 6, 6) ;
 }
 
 .contact-form .form-send {
@@ -391,6 +401,8 @@ h1, h2, h3, h4, h5, h6 {
   background: #222222;
   padding: 20px 0;
   text-align: center;
+  position:relative; bottom:0; z-index:999999;
+  width: 100%;
 }
 
 #copyrights p {

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>Instant - Bootstrap Personal Template</title>
+  <title>products</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
- 
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
@@ -31,11 +32,11 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="/index/shop.php">RETURN</a>
       </div>
       <div class="navbar-collapse collapse">
@@ -52,60 +53,31 @@
   </div>
 
 
-  <div id="aboutwrap" class="aboutwrap">
+  <div id="aboutwrap">
     <div class="container">
-      <div class="row">
+      <div   class="row">
         <div class="col-lg-6 col-lg-offset-3">
+          <h1>Aqui podra agregar y administrar sus productos</h1>
         </div>
       </div>
     </div>
     <!-- /container -->
   </div>
 
-  <div class="container">
-    <div class="row centered mt mb">
-      <div class="col-lg-8 col-lg-offset-2">
-        <h2>PAUL SILVA</h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-      </div>
+  <form class="contact-form" method="POST" action="agregar.php">
 
+    <div class="form-send">
+      <button type="submit"  class="btn btn-large">New Product</button>
     </div>
-  </div>
+  </form>
 
-  <div id="social">
-    <div class="container">
-      <div class="row centered">
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-dribbble"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-twitter"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-instagram"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-tumblr"></i></a>
-        </div>
 
-      </div>
-    </div>
-  </div>
 
   <div id="copyrights">
     <div class="container">
-      
+
       <div class="credits">
-      
+
       </div>
     </div>
   </div>
@@ -121,4 +93,5 @@
   <script src="js/main.js"></script>
 
 </body>
+
 </html>

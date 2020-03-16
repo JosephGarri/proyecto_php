@@ -22,7 +22,7 @@ class clsRegistro
             $tipo='cliente';
 
                 $consulta = "SELECT * FROM users WHERE email='$email'";
-                $ejecutar = mysqli_query($this->objeto->conn, $consulta);
+                $ejecutar = mysqli_query($objeto->conn, $consulta);
         
                 $i = 0;
                 $BDemail=null;
@@ -38,7 +38,7 @@ class clsRegistro
                     return false;
                 } else {
                     $insertar = "INSERT INTO users(name, email,password,tipo) VALUES('$name','$email','$pass','$tipo')";
-                    $ejecutar =  mysqli_query($this->objeto->conn, $insertar);
+                    $ejecutar =  mysqli_query($objeto->conn, $insertar);
                     if ($ejecutar) {
                         return true;
                     } else {
