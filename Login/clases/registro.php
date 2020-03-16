@@ -1,9 +1,11 @@
 <?php
- 
+ require "Vlogin.php";
 class clsRegistro
 {
     protected $request;
-    public $conn;
+    public $objeto = new Vlogin($_POST);
+
+
     public function __construct($request)
     {
         $this->request = $request;
@@ -11,19 +13,15 @@ class clsRegistro
    
     public function ingresar_usuario(): bool
     {
-       
+    $this->objeto->conexion();
+
             $name=$_REQUEST['name'];
             $email=$_REQUEST['email'];
             $pass=$_REQUEST['pass1'];
             $tipo='cliente';
 
-            $conn = mysqli_connect("database", "root", "", "DBTienda");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            else{
                 $consulta = "SELECT * FROM users WHERE email='$email'";
-                $ejecutar = mysqli_query($conn, $consulta);
+                $ejecutar = mysqli_query($this->objeto->conn, $consulta);
         
                 $i = 0;
                 $BDemail=null;
@@ -39,7 +37,7 @@ class clsRegistro
                     return false;
                 } else {
                     $insertar = "INSERT INTO users(name, email,password,tipo) VALUES('$name','$email','$pass','$tipo')";
-                    $ejecutar =  mysqli_query($conn, $insertar);
+                    $ejecutar =  mysqli_query($this->objeto->conn, $insertar);
                     if ($ejecutar) {
                         return true;
                     } else {
@@ -50,7 +48,7 @@ class clsRegistro
 
 
              
-            }
+            
 
            
         

@@ -3,34 +3,38 @@
 class VLogin
 {
     protected $request;
-    
+    public $conn;
+    public static $BDid;
+
     
     public function __construct($request)
     {
         $this->request = $request;
     }
-  
+  public function conexion(){
+    $this->conn = mysqli_connect("database", "root", "", "DBTienda");
+
+    if (!$this->conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    } 
+  }
   
     public function verificar(): bool
     {
-        $conn = mysqli_connect("database", "root", "", "DBTienda");
-
-        if (!$conn) {
-          die("Connection failed: " . mysqli_connect_error());
-        } 
+       $this->conexion();
 
         $email = $_REQUEST['email'] ?? null;
         $password = $_REQUEST['pass'] ?? null;
 
         $consulta = "SELECT * FROM users WHERE email='$email' AND password='$password' ";
-        $ejecutar = mysqli_query($conn, $consulta);
+        $ejecutar = mysqli_query($this->conn, $consulta);
 
         $i = 0;
-        $BDid =null;
+       
         $BDpassword=null;
         $BDemail=null;
         while ($fila = mysqli_fetch_array($ejecutar)) {
-            $BDid = $fila['id'];
+            $this->BDid = $fila['id'];
             $BDpassword = $fila['password'];
             $BDemail = $fila['email'];
 
