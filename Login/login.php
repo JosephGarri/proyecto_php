@@ -75,7 +75,7 @@
                     <?php endif; ?>
 
                     <?php if ($redirect == false) {
-                        header('Location: /index/shop.php?'.$_POST['id_registrado']);
+                        header('Location: /index/shop.php?id_registrado='.$_POST['id_registrado']);
                     } ?>
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
