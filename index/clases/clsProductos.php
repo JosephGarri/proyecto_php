@@ -1,11 +1,24 @@
 <?php
  require "/app/Login/clases/VLogin.php";
 class clsProductos{
-
+public $id_producto=0;
 protected $request;
 public function __construct($request)
 {
     $this->request=$request;
+}
+public function extraer_ultimo(){
+    $objeto = new Vlogin($this->request);
+    $objeto->conexion();
+
+    $consulta = "SELECT MAX(id) FROM productos LIMIT 1";
+    $ejecutar_consulta = mysqli_query($objeto->conn,$consulta);
+    $id_producto=0;
+  
+    while ($fila = mysqli_fetch_array($ejecutar_consulta)) {
+      $this->id_producto=$fila['MAX(id)'];
+             }
+         
 }
     public function agregar($id_registrado):bool{
         try{
@@ -21,9 +34,20 @@ public function __construct($request)
             $id_creador=$id_registrado;
     
             if(move_uploaded_file($_FILES['img']['tmp_name'], $img)){
-                $insertar = "INSERT INTO productos(nombre,descripcion_breve,descripcion,tipo,url_imagen,precio,id_creador) VALUES('$name','$descripcion_breve','$descripcion','$tipo','$img','$precio','$id_creador')";
-                $ejecutar =  mysqli_query($objeto->conn, $insertar);
-                if ($ejecutar) {
+                $insertar_producto = "INSERT INTO productos(nombre,descripcion_breve,descripcion,tipo,url_imagen,precio,id_creador) VALUES('$name','$descripcion_breve','$descripcion','$tipo','$img','$precio','$id_creador')";
+                $ejecutar_producto =  mysqli_query($objeto->conn, $insertar_producto);
+
+                $fecha_actual=parse_str(getdate());
+                var_dump($fecha_actual);
+                $this->extraer_ultimo();
+               $ultimo=intval($this->id_producto);
+         
+                $insertar_fecha="INSERT INTO fechas(fecha_creacion,fecha_modificacion,id_producto) VALUES('$fecha_actual','$fecha_actual','$ultimo')";
+                $ejecutar_fecha =  mysqli_query($objeto->conn, $insertar_fecha);
+
+
+                
+                if ($ejecutar_producto==true && $ejecutar_fecha==true) {
                     return true;
                 } else {
                     return false;
