@@ -4,8 +4,8 @@ class VLogin
 {
     protected $request;
     public $conn;
-    public static $BDid;
-
+    public $id_registrado;
+    
     
     public function __construct($request)
     {
@@ -18,6 +18,7 @@ class VLogin
       die("Connection failed: " . mysqli_connect_error());
     } 
   }
+ 
   
     public function verificar(): bool
     {
@@ -34,7 +35,8 @@ class VLogin
         $BDpassword=null;
         $BDemail=null;
         while ($fila = mysqli_fetch_array($ejecutar)) {
-            $this->BDid = $fila['id'];
+           $_POST['id_registrado']= $fila['id'];
+
             $BDpassword = $fila['password'];
             $BDemail = $fila['email'];
 
