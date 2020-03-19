@@ -99,26 +99,27 @@
         
               <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
 
-                <a href=""><img style="width: 100%; height: 280px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+                <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
                 <div class="form-group">
                 <label>
-                  <h4>Nombre del producto: </h4><?php echo $nombre; ?>
+                <p>Nombre del producto:</p> <?php echo $nombre; ?>
                 </label>
-               
+               <br>
                 <label>
-                  <h4>Informacion breve del producto: </h4><?php echo $descrip_b; ?>
+                 <p>Informacion breve del producto:</p>  <?php echo $descrip_b; ?>
                 </label>
-              
+              <br>
                 <label>
-                  <h4>Precio: </h4><?php echo "₡".$precio; ?>
+                <p>Precio:</p><?php echo "₡".$precio; ?>
                 </label>
+                <br>
               </div>
               <form class="contact-form" method="POST" action="">
-
-                <button style="background-color: #02B6ED" type="submit" class="btn btn-large">EDIT PRODUCT</button>
-                <br>
-                <br>
-                <button style="background-color: #02B6ED" type="submit" class="btn btn-large">VIEW MESSAGES</button>
+                <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">EDIT PRODUCT</button>
+              </form>
+              <br>
+              <form class="contact-form" method="POST" action="">
+                <button style="background-color: #02B6ED; " type="submit" class="btn btn-large">VIEW MESSAGES</button>
 
               </form>
           
