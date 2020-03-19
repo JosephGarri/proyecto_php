@@ -55,7 +55,7 @@
 
   <div id="aboutwrap">
     <div class="container">
-      <div   class="row">
+      <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
           <h1>Aqui podra agregar y administrar sus productos</h1>
         </div>
@@ -64,12 +64,73 @@
     <!-- /container -->
   </div>
 
-  <form class="contact-form" method="POST" action="agregar.php?id_registrado=<?php echo $_GET['id_registrado'];?>">
+  <form class="contact-form" method="POST" action="agregar.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">
 
     <div class="form-send">
-      <button type="submit"  class="btn btn-large">New Product</button>
+      <button type="submit" class="btn btn-large">New Product</button>
     </div>
   </form>
+
+  <section id="works"></section>
+  <div class="container">
+    <div class="row centered mt mb">
+
+      <h1>MY PRODUCTS</h1>
+      <?php
+      $conn = mysqli_connect("database", "root", "", "DBTienda");
+
+      if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+      }
+      $id = $_GET['id_registrado'];
+      $consulta = "SELECT id, nombre, descripcion_breve, url_imagen FROM productos WHERE id_creador='$id'";
+      $ejecutar = mysqli_query($conn, $consulta);
+
+      $i = 0;
+      while ($fila = mysqli_fetch_array($ejecutar)) {
+        $id = $fila['id'];
+        $nombre = $fila['nombre'];
+        $descrip_b = $fila['descripcion_breve'];
+        $url_img = str_replace("/app", " ", $fila['url_imagen']);
+
+        $i++;
+      ?>
+        <table>
+          <tr style="align-content: center">
+            <td>
+              <div class="col-lg-12 gallery">
+
+                <a href=""><img style="width: 300px; height: 300px" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <label><h4>Nombre del producto: </h4><?php echo $nombre; ?> </label>
+                <br>
+                <label><h4>Informacion breve del producto: </h4><?php echo $descrip_b; ?> </label>
+              </div>
+            </td>
+            <td>
+              <form class="contact-form" method="POST" action="">
+
+                <button style="background-color: #02B6ED" type="submit" class="btn btn-large">EDIT PRODUCT</button>
+                <br>
+                <br>
+                <button style="background-color: #02B6ED" type="submit" class="btn btn-large">VIEW MESSAGES</button>
+
+              </form>
+            </td>
+          </tr>
+        </table>
+
+        <br>
+
+
+      <?php
+      }
+      ?>
+    </div>
+  </div>
 
 
 

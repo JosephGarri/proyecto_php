@@ -77,21 +77,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4 gallery">
         <a href="/proyecto_php/index/works.php"><img src="img/portfolio/folio01.png" class="img-responsive"></a>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="/proyecto_php/index/works.php"><img src="img/portfolio/folio02.png" class="img-responsive"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="/proyecto_php/index/works.php"><img src="img/portfolio/folio03.png" class="img-responsive"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="/proyecto_php/index/works.php"><img src="img/portfolio/folio04.png" class="img-responsive"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="/proyecto_php/index/works.php"><img src="img/portfolio/folio05.png" class="img-responsive"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="/proyecto_php/index/works.php"><img src="img/portfolio/folio06.png" class="img-responsive"></a>
-      </div>
+    
     </div>
   </div>
 
