@@ -73,9 +73,10 @@
 
   <section id="works"></section>
   <div class="container">
-    <div class="row centered mt mb">
+    <div class="row centered mt mb" style="padding-right: 30px; padding-left: 30px">
 
       <h1>MY PRODUCTS</h1>
+      <br>
       <?php
       $conn = mysqli_connect("database", "root", "", "DBTienda");
 
@@ -83,7 +84,7 @@
         die("Connection failed: " . mysqli_connect_error());
       }
       $id = $_GET['id_registrado'];
-      $consulta = "SELECT id, nombre, descripcion_breve, url_imagen FROM productos WHERE id_creador='$id'";
+      $consulta = "SELECT id, nombre, descripcion_breve, url_imagen, precio FROM productos WHERE id_creador='$id'";
       $ejecutar = mysqli_query($conn, $consulta);
 
       $i = 0;
@@ -92,25 +93,26 @@
         $nombre = $fila['nombre'];
         $descrip_b = $fila['descripcion_breve'];
         $url_img = str_replace("/app", " ", $fila['url_imagen']);
-
+        $precio = $fila['precio'];
         $i++;
       ?>
-        <table>
-          <tr style="align-content: center">
-            <td>
-              <div class="col-lg-12 gallery">
+        
+              <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
 
-                <a href=""><img style="width: 300px; height: 300px" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+                <a href=""><img style="width: 100%; height: 280px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+                <div class="form-group">
+                <label>
+                  <h4>Nombre del producto: </h4><?php echo $nombre; ?>
+                </label>
+               
+                <label>
+                  <h4>Informacion breve del producto: </h4><?php echo $descrip_b; ?>
+                </label>
+              
+                <label>
+                  <h4>Precio: </h4><?php echo "₡".$precio; ?>
+                </label>
               </div>
-            </td>
-            <td>
-              <div class="form-group">
-                <label><h4>Nombre del producto: </h4><?php echo $nombre; ?> </label>
-                <br>
-                <label><h4>Informacion breve del producto: </h4><?php echo $descrip_b; ?> </label>
-              </div>
-            </td>
-            <td>
               <form class="contact-form" method="POST" action="">
 
                 <button style="background-color: #02B6ED" type="submit" class="btn btn-large">EDIT PRODUCT</button>
@@ -119,13 +121,9 @@
                 <button style="background-color: #02B6ED" type="submit" class="btn btn-large">VIEW MESSAGES</button>
 
               </form>
-            </td>
-          </tr>
-        </table>
-
-        <br>
-
-
+          
+              </div>
+            
       <?php
       }
       ?>
