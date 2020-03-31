@@ -61,7 +61,7 @@
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
           <h4>HELLO PEOPLE, WELCOME TO</h4>
-          <h1>AMAZON STORE</h1>
+          <h1>TECH ZONE STORE</h1>
           <h4>DONDE TUS COMPRAS LLEGAN VOLANDO POR LO RAPIDOS QUE SOMOS</h4>
         </div>
       </div>
