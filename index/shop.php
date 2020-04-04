@@ -111,13 +111,10 @@
                 <br>
               </div>
               <form class="contact-form" method="POST" action="">
-                <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">EDIT PRODUCT</button>
+                <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">VIEW PRODUCT</button>
               </form>
               <br>
-              <form class="contact-form" method="POST" action="">
-                <button style="background-color: #02B6ED; " type="submit" class="btn btn-large">VIEW MESSAGES</button>
-
-              </form>
+            
           
               </div>
             
@@ -127,33 +124,6 @@
     
     </div>
   </div>
-
-  <div id="social">
-    <div class="container">
-      <div class="row centered">
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-dribbble"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-twitter"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-instagram"></i></a>
-        </div>
-        <div class="col-lg-2">
-          <a href="#"><i class="fa fa-tumblr"></i></a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
   <div id="copyrights">
     <div class="container">
 
