@@ -74,23 +74,21 @@
     <div class="row centered mt mb">
       <h1>PRODUCTS</h1>
       <?php
-      $conn = mysqli_connect("database", "root", "", "DBTienda");
+      include "clases/clsProductos.php";
+      $ob= new clsProductos($_SERVER);
 
-      if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-      }
-      $id = $_GET['id_registrado'];
-      $consulta = "SELECT id, nombre, descripcion_breve, url_imagen, precio FROM productos";
-      $ejecutar = mysqli_query($conn, $consulta);
-
+     $datos=$ob->extraer_productos();
+   
+  
       $i = 0;
-      while ($fila = mysqli_fetch_array($ejecutar)) {
-        $id = $fila['id'];
-        $nombre = $fila['nombre'];
-        $descrip_b = $fila['descripcion_breve'];
-        $url_img = str_replace("/app", " ", $fila['url_imagen']);
-        $precio = $fila['precio'];
+      while ($datos = mysqli_fetch_array($ob->ejecutar)) {
+        $id = $datos['id'];
+        $nombre = $datos['nombre'];
+        $descrip_b = $datos['descripcion_breve'];
+        $url_img = str_replace("/app", " ", $datos['url_imagen']);
+        $precio = $datos['precio'];
         $i++;
+       
       ?>
         
               <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
@@ -98,15 +96,15 @@
                 <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
                 <div class="form-group">
                 <label>
-                <p>Nombre del producto:</p> <?php echo $nombre; ?>
+                <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
                 </label>
                <br>
                 <label>
-                 <p>Informacion breve del producto:</p>  <?php echo $descrip_b; ?>
+                 <p>BRIEF PRODUCT INFORMATION:</p>  <?php echo $descrip_b; ?>
                 </label>
               <br>
                 <label>
-                <p>Precio:</p><?php echo "₡".$precio; ?>
+                <p>PRICE:</p><?php echo "₡".$precio; ?>
                 </label>
                 <br>
               </div>
@@ -119,6 +117,13 @@
               </div>
             
       <?php
+    
+      }
+      if($i==0){
+        ?>
+        <h1>THERE ARE NO PRODUCTS TO SHOW</h1>
+      
+         <?php
       }
       ?>
     

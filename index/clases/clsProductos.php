@@ -3,6 +3,8 @@
 class clsProductos{
 public $id_producto=0;
 protected $request;
+public $ejecutar;
+
 public function __construct($request)
 {
     $this->request=$request;
@@ -66,14 +68,50 @@ public function extraer_ultimo(){
         }
       
     }
+
+    public function extraer_productos():array{
+        
+        $objeto = new Vlogin($this->request);
+        $objeto->conexion();
+    
+        $consulta ="SELECT * FROM productos";
+        $this->ejecutar = mysqli_query($objeto->conn, $consulta);
+        $fila = mysqli_fetch_array($this->ejecutar);
+        
+
+        if($fila==null){
+            return [];
+        }
+
+        return $fila;
+    
+    }
+    
     public function extraer_mis_productos($id_registrado):array{
         $objeto = new Vlogin($this->request);
         $objeto->conexion();
 
-        $consulta ="SELECT id, nombre, descripcion_breve, url_imagen FROM productos WHERE id_creador='$id_registrado' ";
-        $ejecutar = mysqli_query($objeto->conn, $consulta);
-        $fila = mysqli_fetch_array($ejecutar );
+        $consulta ="SELECT id, nombre, descripcion_breve, url_imagen, precio FROM productos WHERE id_creador='$id_registrado' ";
+        $this->ejecutar = mysqli_query($objeto->conn, $consulta);
+        $fila = mysqli_fetch_array($this->ejecutar);
+        if($fila==null){
+            return [];
+        }
+        return $fila;
 
+    }
+
+
+    public function extraer_productos_edit($id_producto):array{
+        $objeto = new Vlogin($this->request);
+        $objeto->conexion();
+
+        $consulta ="SELECT id, nombre, descripcion_breve, descripcion, url_imagen, precio FROM productos WHERE id='$id_producto' ";
+        $this->ejecutar = mysqli_query($objeto->conn, $consulta);
+        $fila = mysqli_fetch_array($this->ejecutar);
+        if($fila==null){
+            return [];
+        }
         return $fila;
 
     }
