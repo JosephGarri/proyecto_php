@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: database
--- Tiempo de generación: 19-03-2020 a las 02:02:49
+-- Tiempo de generación: 11-04-2020 a las 03:40:53
 -- Versión del servidor: 5.7.29
 -- Versión de PHP: 7.2.2
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `fechas` (
   `id` int(11) NOT NULL,
-  `fecha_creacion` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `fecha_modificacion` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `fecha_creacion` date NOT NULL,
+  `fecha_modificacion` date NOT NULL,
   `id_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
@@ -59,18 +59,22 @@ CREATE TABLE `productos` (
   `nombre` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `descripcion_breve` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `descripcion` varchar(500) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `tipo` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `id_tipo` int(100) NOT NULL,
   `url_imagen` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `precio` int(11) NOT NULL,
   `id_creador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `productos`
+-- Estructura de tabla para la tabla `tipos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `descripcion_breve`, `descripcion`, `tipo`, `url_imagen`, `precio`, `id_creador`) VALUES
-(1, 'TECLADO', 'TECLADO CON LUZ', 'TECLADO GAMER MECANICO', 'electronico', '/app/index/clases/imgProductos/s276979151741401349_p10_i1_w640.jpeg', 10000, 1);
+CREATE TABLE `tipos` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -91,7 +95,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `tipo`) VALUES
-(1, 'JOSEPH', 'joseph.rd09@gmail.com', '1234', 'cliente');
+(1, 'JOSEPH', 'joseph.rd09@gmail.com', '1234', 'cliente'),
+(2, 'JOSEPH', 'josephgarri15@gmail.com', '1234', 'cliente'),
+(3, ' joseph', 'keilor2012@gmail.com', '1234', 'cliente');
 
 --
 -- Índices para tablas volcadas
@@ -116,6 +122,12 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `tipos`
+--
+ALTER TABLE `tipos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -129,7 +141,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `fechas`
 --
 ALTER TABLE `fechas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -141,13 +153,19 @@ ALTER TABLE `mensajes`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `tipos`
+--
+ALTER TABLE `tipos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

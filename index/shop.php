@@ -75,12 +75,12 @@
       <h1>PRODUCTS</h1>
       <?php
       include "clases/clsProductos.php";
-      $ob= new clsProductos($_SERVER);
+      $ob = new clsProductos($_SERVER);
 
-     $datos=$ob->extraer_productos();
-   
-  
+      $datos = array($ob->extraer_productos());
+      
       $i = 0;
+      
       while ($datos = mysqli_fetch_array($ob->ejecutar)) {
         $id = $datos['id'];
         $nombre = $datos['nombre'];
@@ -88,45 +88,45 @@
         $url_img = str_replace("/app", " ", $datos['url_imagen']);
         $precio = $datos['precio'];
         $i++;
-       
-      ?>
-        
-              <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
 
-                <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
-                <div class="form-group">
-                <label>
-                <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
-                </label>
-               <br>
-                <label>
-                 <p>BRIEF PRODUCT INFORMATION:</p>  <?php echo $descrip_b; ?>
-                </label>
-              <br>
-                <label>
-                <p>PRICE:</p><?php echo "₡".$precio; ?>
-                </label>
-                <br>
-              </div>
-              <form class="contact-form" method="POST" action="">
-                <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">VIEW PRODUCT</button>
-              </form>
-              <br>
-            
-          
-              </div>
-            
+      ?>
+
+        <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
+
+          <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+          <div class="form-group">
+            <label>
+              <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
+            </label>
+            <br>
+            <label>
+              <p>BRIEF PRODUCT INFORMATION:</p> <?php echo $descrip_b; ?>
+            </label>
+            <br>
+            <label>
+              <p>PRICE:</p><?php echo "₡" . $precio; ?>
+            </label>
+            <br>
+          </div>
+          <form class="contact-form" method="POST" action="">
+            <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">VIEW PRODUCT</button>
+          </form>
+          <br>
+
+
+        </div>
+
       <?php
-    
+
       }
-      if($i==0){
-        ?>
+      if ($i == 0) {
+      ?>
         <h1>THERE ARE NO PRODUCTS TO SHOW</h1>
-      
-         <?php
+
+      <?php
       }
       ?>
-    
+
     </div>
   </div>
   <div id="copyrights">

@@ -29,36 +29,35 @@
 
 <body>
     <?php
-     $name="";
-     $descripcion_breve="" ;
-     $descripcion="";
-     $precio="" ;
-     $tipo="";
-     $img= "";
-     $inserto = false;
-     $_POST['vacios'] = false;
+    $name = "";
+    $descripcion_breve = "";
+    $descripcion = "";
+    $precio = "";
+    $tipo = "";
+    $img = "";
+    $inserto = false;
+    $_POST['vacios'] = false;
     if (isset($_POST['insertar'])) {
-        
-        $name=$_REQUEST['name'];
-        $descripcion_breve=$_REQUEST['descripcion_breve'] ;
-        $descripcion=$_REQUEST['descripcion'];
-        $precio=$_REQUEST['precio'] ;
-        $tipo=$_REQUEST['tipo'];
-        $img= $_FILES['img'];
+
+        $name = $_REQUEST['name'];
+        $descripcion_breve = $_REQUEST['descripcion_breve'];
+        $descripcion = $_REQUEST['descripcion'];
+        $precio = $_REQUEST['precio'];
+        $tipo = $_REQUEST['tipo'];
+        $img = $_FILES['img'];
 
         if ('POST' == $_SERVER['REQUEST_METHOD']) { //verifica el request
             require 'clases/clsProductos.php';       // se trae el archivo de la clase
             $objeto = new clsProductos($_SERVER);   // instancia la clase del archivo php con el request
             $inserto = $objeto->agregar($_GET['id_registrado']);   //igualo lo que devuelve el metodo a una variable
-          if($inserto){
-            $name="";
-            $descripcion_breve="" ;
-            $descripcion="";
-            $precio="" ;
-            $tipo="";
-            $img= "";
-          }
-           
+            if ($inserto) {
+                $name = "";
+                $descripcion_breve = "";
+                $descripcion = "";
+                $precio = "";
+                $tipo = "";
+                $img = "";
+            }
         }
     }
 
@@ -92,7 +91,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="centered">Register Products</h2>
 
-                    <form enctype="multipart/form-data" class="contact-form "  role="form" method="POST">
+                    <form enctype="multipart/form-data" class="contact-form " role="form" method="POST">
                         <?php
                         if ($inserto) {
                         ?>
@@ -127,20 +126,34 @@
                             <label for="precio">Price</label><input type="text" name="precio" class="form-control" placeholder="Price" value="<?php echo $precio; ?>">
 
                         </div>
+                      
                         <label for="tipo">Type</label>
-
+                   
                         <div class="form-group">
-                            <select class="form-control" name="tipo" value="<?php echo $tipo;?>">
-                                <option value="null" selected>SELECCIONE UNA CATEGORIA</option>
-                                <option value="electronico">ELECTRONICO</option>
-                                <option value="cocina">COCINA</option>
-                                <option value="ropa">ROPA</option>
-                                <option value="otros">OTROS</option>
+                            <select class="form-control" name="tipo">
+                            <option value="null" selected>SELECCIONE UNA CATEGORIA</option>
+                            <?php
+                                include "clases/clstipos.php";
+                                $ob = new clstipos($_SERVER);
+                                $i = 0;
+                                $datos = array($ob->extraer_tipo());
+
+                                while ($datos = mysqli_fetch_array($ob->ejecutar)) {
+                                  $id = $datos['id'];
+                                  $descripcion = $datos['descripcion'];
+                                  $i++;
+                                  ?>
+                              
+                                 <option value=<?php echo $id;?> selected><?php echo $descripcion;?></option>
+                                 <?php
+                              }
+                            ?>
                             </select>
+                          
                         </div>
-
+                      
                         <div class="form-group">
-                            <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file" accept="image/*" value="<?php echo $img; ?>" />
+                            <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file" accept="image/*" />
                             <br />
                             <img style="width: 300px; height: 300px" class="form-control" id="imgSalida" width="50%" height="50%" src="" />
 
@@ -166,7 +179,7 @@
             </div>
         </div>
     </div>
-  
+
     <script languague="javascript">
         function ocultar() {
 
