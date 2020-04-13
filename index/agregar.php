@@ -126,32 +126,25 @@
                             <label for="precio">Price</label><input type="text" name="precio" class="form-control" placeholder="Price" value="<?php echo $precio; ?>">
 
                         </div>
-                      
+
                         <label for="tipo">Type</label>
-                   
+
                         <div class="form-group">
                             <select class="form-control" name="tipo">
-                            <option value="null" selected>SELECCIONE UNA CATEGORIA</option>
-                            <?php
+                                <option value="null" selected>SELECCIONE UNA CATEGORIA</option>
+                                <?php
                                 include "clases/clstipos.php";
                                 $ob = new clstipos($_SERVER);
-                                $i = 0;
-                                $datos = array($ob->extraer_tipo());
-
-                                while ($datos = mysqli_fetch_array($ob->ejecutar)) {
-                                  $id = $datos['id'];
-                                  $descripcion = $datos['descripcion'];
-                                  $i++;
-                                  ?>
-                              
-                                 <option value=<?php echo $id;?> selected><?php echo $descripcion;?></option>
-                                 <?php
-                              }
-                            ?>
+                             
+                                
+                                if(isset($_POST['insertar']) || !isset($_POST['insertar'])){
+                                    $ob->extraer_tipo();
+                                }
+                                ?>
                             </select>
-                          
+
                         </div>
-                      
+
                         <div class="form-group">
                             <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file" accept="image/*" />
                             <br />

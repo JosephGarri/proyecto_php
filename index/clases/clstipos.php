@@ -6,21 +6,30 @@ class clstipos
 
 
     protected $request;
-    public $ejecutar;
+   
 
     public function __construct($request)
     {
         $this->request = $request;
     }
 
-    public function extraer_tipo(): array
+    public function extraer_tipo()
     {
         $objeto = new Vlogin($this->request);
         $objeto->conexion();
         $consulta = "SELECT * FROM tipos";
-        $this->ejecutar = mysqli_query($objeto->conn, $consulta);
-        $fila = mysqli_fetch_array( $this->ejecutar);
+        $ejecutar = mysqli_query($objeto->conn, $consulta);
+        $i=0;
+        while ($datos = mysqli_fetch_array($ejecutar)) {
+            $id = $datos['id'];
+            $descripcion = $datos['descripcion'];
+            $i++;
+            ?>
+           <option value=<?php echo $id;?> selected><?php echo $descripcion;?></option>
+           <?php
+        }
+   
 
-        return $fila;
     }
 }
+?>
