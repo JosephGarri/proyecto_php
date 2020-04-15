@@ -73,12 +73,14 @@
   <div class="container">
     <div class="row centered mt mb">
       <h1>PRODUCTS</h1>
+      <div style="background-color: #EEEEEE; border-style: groove; align-items: center;"
+    class="col-lg-4 col-md-4 col-sm-4 gallery">
       <?php
       include "clases/clsProductos.php";
       $ob = new clsProductos($_SERVER);
       $ob->extraer_productos();
      ?>
-
+    </div>
     </div>
   </div>
   <div id="copyrights">

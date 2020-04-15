@@ -135,8 +135,6 @@
                                 <?php
                                 include "clases/clstipos.php";
                                 $ob = new clstipos($_SERVER);
-                             
-                                
                                 if(isset($_POST['insertar']) || !isset($_POST['insertar'])){
                                     $ob->extraer_tipo();
                                 }
