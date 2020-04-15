@@ -41,6 +41,7 @@ class clsProductos
 
             if ($name == "" || $descripcion_breve == "" || $descripcion == "" || $precio == "" || $id_tipo == "null" || $img == __DIR__ . DIRECTORY_SEPARATOR . 'imgProductos' . DIRECTORY_SEPARATOR) {
                 $_POST['vacios'] = true;
+                
                 return false;
             } else {
                 if (move_uploaded_file($_FILES['img']['tmp_name'], $img)) {
@@ -90,28 +91,30 @@ class clsProductos
             
             
 ?>
-<a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida"
-        width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
-<div class="form-group">
-    <label>
-        <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
-    </label>
-    <br>
-    <label>
-        <p>BRIEF PRODUCT INFORMATION:</p> <?php echo $descrip_b; ?>
-    </label>
-    <br>
-    <label>
-        <p>PRICE:</p><?php echo "₡" . $precio; ?>
-    </label>
+<div style="background-color: #EEEEEE; border-style: groove; align-items: center;"
+    class="col-lg-4 col-md-4 col-sm-4 gallery">
+    <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida"
+            width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+    <div class="form-group">
+        <label>
+            <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
+        </label>
+        <br>
+        <label>
+            <p>BRIEF PRODUCT INFORMATION:</p> <?php echo $descrip_b; ?>
+        </label>
+        <br>
+        <label>
+            <p>PRICE:</p><?php echo "₡" . $precio; ?>
+        </label>
+        <br>
+    </div>
+    <form class="contact-form" method="POST" action="">
+        <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">VIEW
+            PRODUCT</button>
+    </form>
     <br>
 </div>
-<form class="contact-form" method="POST" action="">
-    <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">VIEW
-        PRODUCT</button>
-</form>
-<br>
-
 <?php
         }
         if ($i == 0) {
@@ -134,47 +137,51 @@ class clsProductos
         $i=0;
         while ($fila = mysqli_fetch_array($ejecutar)) {
          
-            $id =$fila['id'];
+            $id=$fila['id'];
             $nombre = $fila['nombre'];
             $descrip_b = $fila['descripcion_breve'];
             $url_img = str_replace("/app", " ", $fila['url_imagen']);
             $precio = $fila['precio'];
-    
+
+    $link="editar_productos.php?id_registrado=".$id_registrado."&id_producto=".$id;
             $i++;
           ?>
-
-<a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida"
-        width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
-<div class="form-group">
-    <label>
-        <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
-    </label>
+<div style="background-color: #EEEEEE; border-style: groove; align-items: center;"
+    class="col-lg-4 col-md-4 col-sm-4 gallery">
+    <a href=<?php echo $link;?>><img style="width: 600px; height: 250px;position: relative;" class="img-responsive"
+            id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+    <div class="form-group">
+        <label>
+            <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
+        </label>
+        <br>
+        <label>
+            <p>BRIEF PRODUCT INFORMATION:</p> <?php echo $descrip_b; ?>
+        </label>
+        <br>
+        <label>
+            <p>PRICE:</p><?php echo "₡".$precio; ?>
+        </label>
+        <br>
+    </div>
+    <form class="contact-form" method="POST" action="<?php echo $link;?>">
+        <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">EDIT
+            PRODUCT</button>
+    </form>
     <br>
-    <label>
-        <p>BRIEF PRODUCT INFORMATION:</p> <?php echo $descrip_b; ?>
-    </label>
-    <br>
-    <label>
-        <p>PRICE:</p><?php echo "₡".$precio; ?>
-    </label>
-    <br>
+    <form class="contact-form" method="POST" action="">
+        <button style="background-color: #02B6ED; " type="submit" class="btn btn-large">VIEW MESSAGES</button>
+    </form>
 </div>
-<form class="contact-form" method="POST" action="">
-    <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">EDIT
-        PRODUCT</button>
-</form>
-<br>
-<form class="contact-form" method="POST" action="">
-    <button style="background-color: #02B6ED; " type="submit" class="btn btn-large">VIEW MESSAGES</button>
-</form>
 <?php   
-          if($i==0){
-            ?>
+          
+    }
+    if($i==0){
+        ?>
 <h1>THERE ARE NO PRODUCTS TO SHOW</h1>
 <h2>ADD NEW PRODUCTS</h2>
 <?php
           }
-    }
  }
   
   
@@ -184,10 +191,107 @@ class clsProductos
         $objeto = new Vlogin($this->request);
         $objeto->conexion();
 
-        $consulta = "SELECT id, nombre, descripcion_breve, descripcion, url_imagen, precio FROM productos WHERE id='$id_producto' ";
+        $consulta = "SELECT nombre, descripcion_breve, descripcion, url_imagen, precio FROM productos WHERE id='$id_producto' ";
         $ejecutar = mysqli_query($objeto->conn, $consulta);
-      
-       
+
+        $i=0;
+        while ($fila = mysqli_fetch_array($ejecutar)) {
+
+            $nombre = $fila['nombre'];
+            $descrip_b = $fila['descripcion_breve'];
+            $descripcion=$fila['descripcion'];
+            $url_img = str_replace("/app", " ", $fila['url_imagen']);
+            $precio = $fila['precio'];
+         
+            $i++;
+        ?>
+
+<div class="form-group">
+    <label for="name">Product Name*</label> <input type="name" name="name" class="form-control"
+        placeholder="Name of Product" value="<?php echo $nombre; ?>">
+
+</div>
+<div class="form-group">
+    <label for="descripcion_breve">Brief description of the product</label> <input type="text" name="descripcion_breve"
+        class="form-control" placeholder="brief description of the product" value="<?php echo $descrip_b; ?>">
+
+</div>
+<div class="form-group">
+    <label for="descripcion"></label>Product description<textarea class="form-control" name="descripcion"
+        placeholder="Product description" rows="4" value=""><?php echo $descripcion; ?></textarea>
+
+</div>
+<div class="form-group">
+    <label for="precio">Price</label><input type="text" name="precio" class="form-control" placeholder="Price"
+        value="<?php echo $precio; ?>">
+
+</div>
+<?php
+   include "clases/clstipos.php";
+   $ob = new clstipos($_SERVER);
+    ?>
+<label for="tipo">Type</label>
+
+<div class="form-group">
+    <select class="form-control" name="tipo">
+        <option value="null" selected>SELECCIONE UNA CATEGORIA</option>
+        <?php
+             $ob->extraer_tipo();
+            ?>
+    </select>
+
+</div>
+
+<div class="form-group">
+    <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file"
+        accept="image/*" />
+    <br />
+    <img style="width: 300px; height: 300px" class="form-control" id="imgSalida" width="50%" height="50%"
+        src=<?php echo $url_img; ?> />
+
+</div>
+
+
+<?php
+    }
+ }
+ public function editar_producto($id_producto): bool
+    {
+        try {
+            $objeto = new Vlogin($this->request);
+            $objeto->conexion();
+
+            $name = $_REQUEST['name'] ?? null;
+            $descripcion_breve = $_REQUEST['descripcion_breve'] ?? null;
+            $descripcion = $_REQUEST['descripcion'] ?? null;
+            $precio = $_REQUEST['precio'] ?? null;
+            $id_tipo = intval($_REQUEST['tipo'] ?? null);
+            $img = __DIR__ . DIRECTORY_SEPARATOR . 'imgProductos' . DIRECTORY_SEPARATOR . $_FILES['img']['name'];
+
+            if ($name == "" || $descripcion_breve == "" || $descripcion == "" || $precio == "" || $id_tipo == "null" || $img == __DIR__ . DIRECTORY_SEPARATOR . 'imgProductos' . DIRECTORY_SEPARATOR) {
+                $_POST['vacios'] = true;
+                
+                return false;
+            } else {
+                if (move_uploaded_file($_FILES['img']['tmp_name'], $img)) {
+                    $actualizar_producto = "UPDATE productos SET nombre=".$name.",descripcion_breve=".$descripcion_breve.",descripcion=".$descripcion.",id_tipo=".$id_tipo.",url_imagen=".$img.",precio=".$precio." WHERE id=".$id_producto;
+                    $ejecutar_producto =  mysqli_query($objeto->conn, $actualizar_producto);
+
+                    $actualizar_fecha = "UPDATE fechas SET fecha_modificacion=CURRENT_TIME() WHERE id_producto=".$id_producto;
+                    $ejecutar_fecha =  mysqli_query($objeto->conn, $actualizar_fecha);
+
+                    if ($ejecutar_producto == true && $ejecutar_fecha == true) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    echo "someting went wrong.\n";
+                }
+            }
+        } catch (Exception $e) {
+            var_dump($e);
+        }
     }
 }
  

@@ -77,12 +77,12 @@
 
       <h1>MY PRODUCTS</h1>
       <br>
-      <div style="background-color: #EEEEEE; border-style: groove; align-items: center;"
-    class="col-lg-4 col-md-4 col-sm-4 gallery">
+  
       <?php
      require "clases/clsProductos.php";
      $ob = new clsProductos($_SERVER);
      $ob->extraer_mis_productos($_GET['id_registrado']);
+      
      ?>
     </div>
   </div>
@@ -96,7 +96,7 @@
 
       </div>
     </div>
-  </div>
+
   <!-- / copyrights -->
 
   <!-- JavaScript Libraries -->
