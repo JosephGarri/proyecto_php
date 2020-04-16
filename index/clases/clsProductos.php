@@ -286,6 +286,13 @@ var_dump($actualizar_producto);
             var_dump($e);
         }
     }
+    public function eliminar_producto($id_producto){
+        $objeto = new Vlogin($this->request);
+        $objeto->conexion();
+        $eliminar_producto = "DELETE producto WHERE id=".$id_producto;
+        $ejecutar_producto =  mysqli_query($objeto->conn, $eliminar_producto);
+        $eliminar_fecha="DELETE fechas"
+    }
 }
  
 ?>
