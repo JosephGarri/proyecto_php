@@ -36,5 +36,23 @@ class clstipos
    
 
     }
+    public function extraer_tipo_seleccionado($id_tipo)
+    {
+        
+      $this->conexion();
+        $consulta = "SELECT * FROM tipos";
+        $ejecutar = mysqli_query($this->conn, $consulta);
+        $i=0;
+        while ($datos = mysqli_fetch_array($ejecutar)) {
+            $id = $datos['id'];
+            $descripcion = $datos['descripcion'];
+            $i++;
+            ?>
+           <option value="<?php echo $id;?>" <?php if($id==$id_tipo){?>selected <?php  } ?>><?php echo $descripcion;?></option>
+           <?php
+        }
+   
+
+    }
 }
 ?>

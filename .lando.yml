@@ -10,3 +10,6 @@ services:
     type: phpmyadmin
     hosts:
       - database
+  appserver:
+    config:
+      php: php.ini

@@ -142,7 +142,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file" accept="image/*" />
+                            <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file" accept="image/*"  />
                             <br />
                             <img style="width: 300px; height: 300px" class="form-control" id="imgSalida" width="50%" height="50%" src=<?php echo $img; ?> />
 

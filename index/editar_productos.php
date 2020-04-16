@@ -34,23 +34,9 @@
       $inserto = false;
       $_POST['vacios'] = false;
     if (isset($_POST['insertar'])) {
-        $name = $_REQUEST['name'];
-        $descripcion_breve = $_REQUEST['descripcion_breve'];
-        $descripcion = $_REQUEST['descripcion'];
-        $precio = $_REQUEST['precio'];
-        $tipo = $_REQUEST['tipo'];
-        $img = $_FILES['img'];
         if ('POST' == $_SERVER['REQUEST_METHOD']) { //verifica el request
            // instancia la clase del archivo php con el request$
-            // $inserto=$objeto->extraer_productos_edit($_GET['id_producto']);
-            if ($inserto) {
-                $name = "";
-                $descripcion_breve = "";
-                $descripcion = "";
-                $precio = "";
-                $tipo = "";
-                $img = "";
-            }
+             $inserto=$objeto->editar_producto($_GET['id_producto']);
         }
     }
 
@@ -90,7 +76,7 @@
                         if ($inserto) {
                         ?>
                             <div data-symbol="&#10004;" class="alert alert-success" role="alert" id="alerta">
-                                <h4> Registered product successfully ✔ </h4>
+                                <h4>product Edited successfully ✔ </h4>
                             </div>
                         <?php
                         }
@@ -110,7 +96,9 @@
                         <div class="form-send">
                             <button type="submit" name="insertar" class="btn btn-large">Edit product</Regibutton>
                         </div>
-
+                        <div class="form-send">
+                            <button type="submit" name="eliminar" class="btn btn-large">Delete product</Regibutton>
+                        </div>
                     </form>
 
                 </div>

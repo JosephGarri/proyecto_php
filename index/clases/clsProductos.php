@@ -54,8 +54,6 @@ class clsProductos
                     $insertar_fecha = "INSERT INTO fechas(fecha_creacion,fecha_modificacion,id_producto) VALUES(CURRENT_TIME(),CURRENT_TIME(),'$ultimo')";
                     $ejecutar_fecha =  mysqli_query($objeto->conn, $insertar_fecha);
 
-
-
                     if ($ejecutar_producto == true && $ejecutar_fecha == true) {
                         return true;
                     } else {
@@ -79,9 +77,6 @@ class clsProductos
         $ejecutar = mysqli_query($objeto->conn, $consulta);
         $i = 0;
         while ($fila = mysqli_fetch_array($ejecutar)) {
-
-         
-            
             $id = $fila['id'];
             $nombre = $fila['nombre'];
             $descrip_b = $fila['descripcion_breve'];
@@ -89,12 +84,10 @@ class clsProductos
             $precio = $fila['precio'];
             $i++; 
             
-            
 ?>
 <div style="background-color: #EEEEEE; border-style: groove; align-items: center;"
     class="col-lg-4 col-md-4 col-sm-4 gallery">
-    <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida"
-            width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+    <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
     <div class="form-group">
         <label>
             <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
@@ -191,7 +184,7 @@ class clsProductos
         $objeto = new Vlogin($this->request);
         $objeto->conexion();
 
-        $consulta = "SELECT nombre, descripcion_breve, descripcion, url_imagen, precio FROM productos WHERE id='$id_producto' ";
+        $consulta = "SELECT nombre, descripcion_breve, descripcion, url_imagen, precio,id_tipo FROM productos WHERE id='$id_producto' ";
         $ejecutar = mysqli_query($objeto->conn, $consulta);
 
         $i=0;
@@ -202,6 +195,7 @@ class clsProductos
             $descripcion=$fila['descripcion'];
             $url_img = str_replace("/app", " ", $fila['url_imagen']);
             $precio = $fila['precio'];
+            $id_tipo=$fila['id_tipo'];
          
             $i++;
         ?>
@@ -234,17 +228,16 @@ class clsProductos
 
 <div class="form-group">
     <select class="form-control" name="tipo">
-        <option value="null" selected>SELECCIONE UNA CATEGORIA</option>
+        <option value="null">SELECCIONE UNA CATEGORIA</option>
         <?php
-             $ob->extraer_tipo();
+             $ob->extraer_tipo_seleccionado($id_tipo);
             ?>
     </select>
 
 </div>
 
 <div class="form-group">
-    <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file"
-        accept="image/*" />
+    <label for="file-input">Image</label> <input class="form-control" name="img" id="file-input" type="file" accept="image/*" value="<?php echo $fila['url_imagen']; ?>">
     <br />
     <img style="width: 300px; height: 300px" class="form-control" id="imgSalida" width="50%" height="50%"
         src=<?php echo $url_img; ?> />
@@ -268,18 +261,18 @@ class clsProductos
             $id_tipo = intval($_REQUEST['tipo'] ?? null);
             $img = __DIR__ . DIRECTORY_SEPARATOR . 'imgProductos' . DIRECTORY_SEPARATOR . $_FILES['img']['name'];
 
+            
             if ($name == "" || $descripcion_breve == "" || $descripcion == "" || $precio == "" || $id_tipo == "null" || $img == __DIR__ . DIRECTORY_SEPARATOR . 'imgProductos' . DIRECTORY_SEPARATOR) {
                 $_POST['vacios'] = true;
-                
                 return false;
             } else {
                 if (move_uploaded_file($_FILES['img']['tmp_name'], $img)) {
-                    $actualizar_producto = "UPDATE productos SET nombre=".$name.",descripcion_breve=".$descripcion_breve.",descripcion=".$descripcion.",id_tipo=".$id_tipo.",url_imagen=".$img.",precio=".$precio." WHERE id=".$id_producto;
+                    $actualizar_producto = "UPDATE productos SET nombre='".$name."',descripcion_breve='".$descripcion_breve."',descripcion='".$descripcion."',id_tipo=".$id_tipo.",url_imagen='".$img."',precio=".$precio." WHERE id=".intval($id_producto);
                     $ejecutar_producto =  mysqli_query($objeto->conn, $actualizar_producto);
 
                     $actualizar_fecha = "UPDATE fechas SET fecha_modificacion=CURRENT_TIME() WHERE id_producto=".$id_producto;
                     $ejecutar_fecha =  mysqli_query($objeto->conn, $actualizar_fecha);
-
+var_dump($actualizar_producto);
                     if ($ejecutar_producto == true && $ejecutar_fecha == true) {
                         return true;
                     } else {
