@@ -272,7 +272,7 @@ class clsProductos
 
                     $actualizar_fecha = "UPDATE fechas SET fecha_modificacion=CURRENT_TIME() WHERE id_producto=".$id_producto;
                     $ejecutar_fecha =  mysqli_query($objeto->conn, $actualizar_fecha);
-var_dump($actualizar_producto);
+
                     if ($ejecutar_producto == true && $ejecutar_fecha == true) {
                         return true;
                     } else {
@@ -286,12 +286,20 @@ var_dump($actualizar_producto);
             var_dump($e);
         }
     }
-    public function eliminar_producto($id_producto){
+    public function eliminar_producto($id_producto):bool{
         $objeto = new Vlogin($this->request);
         $objeto->conexion();
-        $eliminar_producto = "DELETE producto WHERE id=".$id_producto;
+        $eliminar_producto = "DELETE FROM productos WHERE id=".$id_producto;
         $ejecutar_producto =  mysqli_query($objeto->conn, $eliminar_producto);
-        $eliminar_fecha="DELETE fechas"
+        $eliminar_fecha="DELETE FROM fechas WHERE id_producto=".$id_producto;
+        $ejecutar_fecha=mysqli_query($objeto->conn,$eliminar_fecha);
+
+        if($ejecutar_fecha==true && $ejecutar_producto==true){
+        return true;    
+        }
+        else{
+            return false;
+        }
     }
 }
  

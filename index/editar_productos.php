@@ -29,14 +29,14 @@
 
 <body>
     <?php
-      require 'clases/clsProductos.php';       // se trae el archivo de la clase
-      $objeto = new clsProductos($_SERVER);  
-      $inserto = false;
-      $_POST['vacios'] = false;
+    require 'clases/clsProductos.php';       // se trae el archivo de la clase
+    $objeto = new clsProductos($_SERVER);
+    $inserto = false;
+    $_POST['vacios'] = false;
     if (isset($_POST['insertar'])) {
         if ('POST' == $_SERVER['REQUEST_METHOD']) { //verifica el request
-           // instancia la clase del archivo php con el request$
-             $inserto=$objeto->editar_producto($_GET['id_producto']);
+            // instancia la clase del archivo php con el request$
+            $inserto = $objeto->editar_producto($_GET['id_producto']);
         }
     }
 
@@ -91,7 +91,7 @@
                         }
                         $objeto->extraer_productos_edit($_GET['id_producto']);
                         ?>
-                       
+
 
                         <div class="form-send">
                             <button type="submit" name="insertar" class="btn btn-large">Edit product</Regibutton>
@@ -99,6 +99,20 @@
                         <div class="form-send">
                             <button type="submit" name="eliminar" class="btn btn-large">Delete product</Regibutton>
                         </div>
+                        <?php
+                        if (isset($_POST['eliminar'])) {
+                                $elimino = $objeto->eliminar_producto($_GET['id_producto']);
+                                if ($elimino) {
+                        ?>
+                                    <script type="text/javascript">
+                                      alert("El PRODUCTO A SIDO ELIMINADO");
+                                    </script>
+                        <?php
+                           header('Location: /index/productos.php?id_registrado='.$_GET['id_registrado']);
+                                }
+                            
+                        }
+                        ?>
                     </form>
 
                 </div>
