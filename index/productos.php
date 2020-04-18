@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,14 +38,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/index/shop.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">RETURN</a>
+        <a class="navbar-brand" href="/index/shop.php">RETURN</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/index/shop.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">Shop</a></li>
-          <li class="active"><a href="/index/productos.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">My products</a></li>
-          <li><a href="/index/works.php?id_registrado=<?php echo $_GET['id_registrado']; ?>" class="smoothscroll">Works</a></li>
-          <li><a href="/index/contact.php?id_registrado=<?php echo $_GET['id_registrado']; ?>" class="smoothscroll">Contact</a></li>
+          <li><a href="/index/shop.php">Shop</a></li>
+          <li class="active"><a href="/index/productos.php">My products</a></li>
+          <li><a href="/index/works.php" class="smoothscroll">Works</a></li>
           <li style="margin-left: 200px"><a href="/Login/login.php" class="smoothscroll">Logout</a></li>
         </ul>
       </div>
@@ -64,7 +64,7 @@
     <!-- /container -->
   </div>
 
-  <form class="contact-form" method="POST" action="agregar.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">
+  <form class="contact-form" method="POST" action="agregar.php">
 
     <div class="form-send">
       <button type="submit" class="btn btn-large">New Product</button>
@@ -81,7 +81,7 @@
       <?php
      require "clases/clsProductos.php";
      $ob = new clsProductos($_SERVER);
-     $ob->extraer_mis_productos($_GET['id_registrado']);
+     $ob->extraer_mis_productos($_SESSION['id_usuario']);
       
      ?>
     </div>

@@ -33,13 +33,14 @@
     <?php
     $vincorrecto = false;
     $redirect = true;
-    $id_registrado=null;
+
     if ('POST' == $_SERVER['REQUEST_METHOD']) { //verifica el request
-        require 'clases/VLogin.php';       // se trae el archivo de la clase
+       
+      session_start();
+       require 'clases/VLogin.php';       // se trae el archivo de la clase
         $validar = new VLogin($_SERVER);   // instancia la clase del archivo php con el request
         $vincorrecto = $validar->verificar();   //igualo lo que devuelve el metodo a una variable
         $redirect = $validar->verificar();
-        $id_registrado=$_POST['id_registrado'];
     }
 
     ?>
@@ -75,7 +76,7 @@
                     <?php endif; ?>
 
                     <?php if ($redirect == false) {
-                        header('Location: /index/shop.php?id_registrado='.$_POST['id_registrado']);
+                        header('Location: /index/shop.php');
                     } ?>
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">

@@ -6,10 +6,11 @@ proxy:
 config:
   webroot: .
 services:
+  appserver:
+    config:
+      php: php.ini
   dbms:
     type: phpmyadmin
     hosts:
       - database
-  appserver:
-    config:
-      php: php.ini
+

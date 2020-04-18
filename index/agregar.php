@@ -47,7 +47,7 @@
         if ('POST' == $_SERVER['REQUEST_METHOD']) { //verifica el request
             require 'clases/clsProductos.php';       // se trae el archivo de la clase
             $objeto = new clsProductos($_SERVER);   // instancia la clase del archivo php con el request$
-            $inserto=$objeto->agregar($_GET['id_registrado']);
+            $inserto=$objeto->agregar($_SESSION['id_usuario']);
             if ($inserto) {
                 $name = "";
                 $descripcion_breve = "";
@@ -69,15 +69,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index/shop.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">RETURN</a>
+                <a class="navbar-brand" href="/index/shop.php">RETURN</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/index/shop.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">Shop</a></li>
-                    <li class="active"><a href="/index/productos.php?id_registrado=<?php echo $_GET['id_registrado']; ?>">My
-                            products</a></li>
-                    <li><a href="/index/works.php?id_registrado=<?php echo $_GET['id_registrado']; ?>" class="smoothscroll">Works</a></li>
-                    <li><a href="/index/contact.php?id_registrado=<?php echo $_GET['id_registrado']; ?>" class="smoothscroll">Contact</a></li>
+                    <li><a href="/index/shop.php">Shop</a></li>
+                    <li class="active"><a href="/index/productos.php">My products</a></li>
+                    <li><a href="/index/works.php" class="smoothscroll">Works</a></li>
                     <li style="margin-left: 200px"><a href="/Login/login.php" class="smoothscroll">Logout</a></li>
                 </ul>
             </div>

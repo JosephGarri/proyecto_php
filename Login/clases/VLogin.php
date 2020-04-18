@@ -22,6 +22,7 @@ class VLogin
   
     public function verificar(): bool
     {
+      session_start();
        $this->conexion();
 
         $email = $_REQUEST['email'] ?? null;
@@ -35,7 +36,7 @@ class VLogin
         $BDpassword=null;
         $BDemail=null;
         while ($fila = mysqli_fetch_array($ejecutar)) {
-           $_POST['id_registrado']= $fila['id'];
+           $_SESSION['id_usuario']= $fila['id'];
 
             $BDpassword = $fila['password'];
             $BDemail = $fila['email'];

@@ -1,34 +1,9 @@
-<?php
-require 'clases/clsProductos.php';       // se trae el archivo de la clase
-$objeto = new clsProductos($_SERVER);
-$inserto = false;
-$_POST['vacios'] = false;
-if (isset($_POST['insertar'])) {
-    if ('POST' == $_SERVER['REQUEST_METHOD']) { //verifica el request
-        // instancia la clase del archivo php con el request$
-        $inserto = $objeto->editar_producto($_GET['id_producto']);
-    }
-}
-if (isset($_POST['eliminar'])) {
-    $elimino = $objeto->eliminar_producto($_GET['id_producto']);
-    if ($elimino) {
-?>
-        <script type="text/javascript">
-            alert("El PRODUCTO A SIDO ELIMINADO");
-            location.href = "productos.php";
-        </script>
-<?php
-
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>EDITAR PRODUCTOS</title>
+    <title>Instant - Bootstrap Personal Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -80,34 +55,22 @@ if (isset($_POST['eliminar'])) {
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="centered">Edit Products</h2>
+                    <h2 class="centered">VIEW DETAILS</h2>
 
-                    <form enctype="multipart/form-data" class="contact-form " role="form" method="POST">
+                    <form enctype="multipart/form-data" class="contact-form " role="form" method="POST" action="shop.php">
+                      
                         <?php
-                        if ($inserto) {
-                        ?>
-                            <div data-symbol="&#10004;" class="alert alert-success" role="alert" id="alerta">
-                                <h4>product Edited successfully ✔ </h4>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                        <?php
-                        if ($_POST['vacios']) {
-                        ?>
-                            <div class="alert alert-warning" id="alerta" role="alert">
-                                <h4>❌ ENTER ALL THE DATA</h4>
-                            </div>
-                        <?php
-                        }
-                        $objeto->extraer_productos_edit($_GET['id_producto']);
+                       include "clases/clsProductos.php";
+                       $ob = new clsProductos($_SERVER);
+                       $ob->ver_producto($_GET['id_producto']);
                         ?>
                         <br>
 
-                        <div class="form-send">
-                            <button style="margin-right: 100px" type="submit" name="insertar" class="btn btn-large">Edit product</Regibutton>
-
-                                <button type="submit" name="eliminar" class="btn btn-large">Delete product</Regibutton>
+                        <div class="form-send" >
+                           
+                              <button style="margin-right: 100px" type="submit" name="return" class="btn btn-large">Return</Regibutton>   
+                           
+                           
                         </div>
 
                     </form>

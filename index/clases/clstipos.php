@@ -54,5 +54,20 @@ class clstipos
    
 
     }
+    public function extraer_nombre_tipo($id_tipo):string
+    {
+        
+      $this->conexion();
+        $consulta = "SELECT * FROM tipos WHERE id=".$id_tipo;
+        $ejecutar = mysqli_query($this->conn, $consulta);
+        $i=0;
+        while ($datos = mysqli_fetch_array($ejecutar)) {
+            $descripcion = $datos['descripcion'];
+            $i++;
+            return $descripcion;
+        }
+   
+
+    }
 }
 ?>
