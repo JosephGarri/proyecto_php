@@ -1,3 +1,9 @@
+<?php 
+if(isset($_POST['return'])){
+    header("Location: shop.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +63,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="centered">VIEW DETAILS</h2>
 
-                    <form enctype="multipart/form-data" class="contact-form " role="form" method="POST" action="shop.php">
+                    <form enctype="multipart/form-data" class="contact-form " role="form" method="POST">
                       
                         <?php
                        include "clases/clsProductos.php";
@@ -65,14 +71,9 @@
                        $ob->ver_producto($_GET['id_producto']);
                         ?>
                         <br>
-
                         <div class="form-send" >
-                           
-                              <button style="margin-right: 100px" type="submit" name="return" class="btn btn-large">Return</Regibutton>   
-                           
-                           
+                              <button style="margin-right: 100px" type="submit" name="return" class="btn btn-large">Return</Regibutton>
                         </div>
-
                     </form>
 
                 </div>
