@@ -1,21 +1,3 @@
-<?php
-require "clases/clsMensajes.php";
-$inserto = null;
-if (isset($_POST['return'])) {
-    header("Location: shop.php");
-}
-
-if (isset($_POST['message'])) {
-    if ('POST' == $_SERVER['REQUEST_METHOD']) {
-       
-        $obMensaje = new clsMensajes($_SERVER);
-        var_dump( $_POST['message']);
-        $inserto = $obMensaje->guardar_mensaje($_GET['id_producto'], $_SESSION['id_usuario']);
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,8 +42,8 @@ if (isset($_POST['message'])) {
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="/index/shop.php">Shop</a></li>
-                    <li ><a href="/index/productos.php">My products</a></li>
+                    <li><a href="/index/shop.php">Shop</a></li>
+                    <li class="active"><a href="/index/productos.php">My products</a></li>
                     <li><a href="/index/works.php" class="smoothscroll">Works</a></li>
                     <li style="margin-left: 200px"><a href="/Login/login.php" class="smoothscroll">Logout</a></li>
                 </ul>
@@ -69,50 +51,21 @@ if (isset($_POST['message'])) {
             <!--/.nav-collapse -->
         </div>
     </div>
-    <div id="contact" onclick="ocultar()">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="centered">VIEW DETAILS</h2>
 
-                    <form enctype="multipart/form-data" class="contact-form " role="form" method="POST">
-
-                        <?php
-                        include "clases/clsProductos.php";
-                        $ob = new clsProductos($_SERVER);
-                        $ob->ver_producto($_GET['id_producto']);
-                        ?>
-                        <div>
-                            <textarea class="form-control" name="txtmessage" placeholder="Message" rows="4" value=""></textarea>
-                            <br>
-                            <button type="submit" name="message" class="btn btn-large">Send Message</Regibutton>
-                        </div>
-                        <br>
-                        <?php
-                        if ($inserto == true) {
-                        ?>
-                            <div data-symbol="&#10004;" class="alert alert-success" role="alert" id="alerta">
-                                <h4>Message send successfully ✔ </h4>
-                            </div>
-
-                        <?php
-                        } 
-                        ?>
-                          
-                        <br>
-                        <div class="form-send">
-                            <button style="margin-right: 100px" type="submit" name="return" class="btn btn-large">Return</Regibutton>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+  
+    <div class="container">
+        <div class="row centered mt mb">
+            <h1>VIEW MESSAGE</h1>
+            <?php
+            include "clases/clsMensajes.php";
+            $ob = new clsMensajes($_SERVER);
+            $ob->mostrar_mensajes($_GET['id_producto']);
+            ?>
         </div>
     </div>
     <div id="copyrights">
         <div class="container">
             <p>
-
             </p>
             <div class="credits">
 

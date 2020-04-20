@@ -82,8 +82,12 @@ class clsProductos
             $descrip_b = $fila['descripcion_breve'];
             $url_img = str_replace("/app", " ", $fila['url_imagen']);
             $precio = $fila['precio'];
+            $id_creador=$fila['id_creador'];
             $i++;
             $link = "ver_producto.php?id_producto=" . $id;
+            if($id_creador !=$_SESSION['id_usuario']){
+
+            
 ?>
             <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
                 <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
@@ -108,6 +112,7 @@ class clsProductos
                 <br>
             </div>
         <?php
+         }
         }
         if ($i == 0) {
         ?>
@@ -134,6 +139,7 @@ class clsProductos
             $precio = $fila['precio'];
 
             $link = "editar_productos.php?id_producto=" . $id . "&nombre_producto=" . $nombre;
+            $link2 = "ver_mensajes.php?id_producto=" . $id . "&nombre_producto=" . $nombre;
             $i++;
         ?>
             <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
@@ -157,7 +163,7 @@ class clsProductos
                         PRODUCT</button>
                 </form>
                 <br>
-                <form class="contact-form" method="POST" action="">
+                <form class="contact-form" method="POST" action="<?php echo $link2; ?>">
                     <button style="background-color: #02B6ED; " type="submit" class="btn btn-large">VIEW MESSAGES</button>
                 </form>
             </div>
@@ -312,6 +318,7 @@ class clsProductos
             $precio = $fila['precio'];
             $id_tipo = $fila['id_tipo'];
             $i++;
+
         ?>
 
             <div class="form-group">
@@ -339,7 +346,9 @@ class clsProductos
             </div>
             <?php
             include "clases/clstipos.php";
+            include "clases/clsFechas.php";
             $ob = new clstipos($_SERVER);
+            $obFechas= new clsFechas($_SERVER);
             ?>
             <div class="form-group">
                 <label for="type">Type: </label>
@@ -351,10 +360,11 @@ class clsProductos
                 <br>
                 <label namespace="type">₡<?php echo $precio; ?></label>
             </div>
+            <?php
+            $obFechas->extraer_fecha($id_producto);
+            ?>
             <div class="form-group">
-
                 <img style="width: 500px; height: 500px" class="form-control" id="imgSalida" width="50%" height="50%" src=<?php echo $url_img; ?> />
-
             </div>
 
 

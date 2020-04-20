@@ -15,7 +15,7 @@ class clsRegistro
     {
    $objeto = new Vlogin($this->request);
     $objeto->conexion();
-
+         
             $name=$_REQUEST['name'];
             $email=$_REQUEST['email'];
             $pass=$_REQUEST['pass1'];
@@ -37,6 +37,7 @@ class clsRegistro
                     $_REQUEST['email_existe']=true;
                     return false;
                 } else {
+                    $pass= md5($pass);
                     $insertar = "INSERT INTO users(name, email,password,tipo) VALUES('$name','$email','$pass','$tipo')";
                     $ejecutar =  mysqli_query($objeto->conn, $insertar);
                     if ($ejecutar) {

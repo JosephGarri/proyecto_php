@@ -74,7 +74,6 @@
   <div class="container">
     <div class="row centered mt mb">
       <h1>PRODUCTS</h1>
-     
       <?php
       include "clases/clsProductos.php";
       $ob = new clsProductos($_SERVER);
@@ -82,7 +81,7 @@
      ?>
     </div>
     </div>
-  </div>
+
   <div id="copyrights">
     <div class="container">
 

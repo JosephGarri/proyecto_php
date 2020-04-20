@@ -26,31 +26,23 @@ class VLogin
        $this->conexion();
 
         $email = $_REQUEST['email'] ?? null;
-        $password = $_REQUEST['pass'] ?? null;
+        $password =md5($_REQUEST['pass']) ?? null;
 
-        $consulta = "SELECT * FROM users WHERE email='$email' AND password='$password' ";
+        $consulta = "SELECT * FROM users WHERE email='$email' AND password='$password'";
         $ejecutar = mysqli_query($this->conn, $consulta);
 
         $i = 0;
-       
-        $BDpassword=null;
-        $BDemail=null;
         while ($fila = mysqli_fetch_array($ejecutar)) {
            $_SESSION['id_usuario']= $fila['id'];
-
-            $BDpassword = $fila['password'];
-            $BDemail = $fila['email'];
-
             $i++;
-                }
-        //   var_dump($ejecutar);
-        if ($email==$BDemail && $password==$BDpassword) {
+                
+        if ($password===$fila['password']) {
             return  false;
-
         } else {
+          session_destroy();
             return true;
-            
+          
         }
-         
+         }
     }
 }
