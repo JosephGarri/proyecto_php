@@ -83,10 +83,10 @@ class clsProductos
             $url_img = str_replace("/app", " ", $fila['url_imagen']);
             $precio = $fila['precio'];
             $id_creador=$fila['id_creador'];
-            $i++;
+           
             $link = "ver_producto.php?id_producto=" . $id;
             if($id_creador !=$_SESSION['id_usuario']){
-
+                $i++;
             
 ?>
             <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
