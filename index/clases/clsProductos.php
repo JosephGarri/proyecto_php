@@ -5,9 +5,6 @@ class clsProductos
     public $id_producto = 0;
     protected $request;
 
-
-
-
     public function __construct($request)
     {
         $this->request = $request;
@@ -82,40 +79,40 @@ class clsProductos
             $descrip_b = $fila['descripcion_breve'];
             $url_img = str_replace("/app", " ", $fila['url_imagen']);
             $precio = $fila['precio'];
-            $id_creador=$fila['id_creador'];
-           
+            $id_creador = $fila['id_creador'];
+
             $link = "ver_producto.php?id_producto=" . $id;
-            if($id_creador !=$_SESSION['id_usuario']){
+            if ($id_creador != $_SESSION['id_usuario']) {
                 $i++;
-            
+
 ?>
-            <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
-                <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
-                <div class="form-group">
-                    <label>
-                        <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
-                    </label>
-                    <br>
-                    <label>
-                        <p>BRIEF PRODUCT INFORMATION:</p> <?php echo $descrip_b; ?>
-                    </label>
-                    <br>
-                    <label>
-                        <p>PRICE:</p><?php echo "₡" . $precio; ?>
-                    </label>
+                <div style="background-color: #EEEEEE; border-style: groove; align-items: center;" class="col-lg-4 col-md-4 col-sm-4 gallery">
+                    <a href=""><img style="width: 600px; height: 250px;position: relative;" class="img-responsive" id="imgSalida" width="50%" height="50%" src="<?php echo $url_img; ?>" /></a>
+                    <div class="form-group">
+                        <label>
+                            <p>PRODUCT NAME:</p> <?php echo $nombre; ?>
+                        </label>
+                        <br>
+                        <label>
+                            <p>BRIEF PRODUCT INFORMATION:</p> <?php echo $descrip_b; ?>
+                        </label>
+                        <br>
+                        <label>
+                            <p>PRICE:</p><?php echo "₡" . $precio; ?>
+                        </label>
+                        <br>
+                    </div>
+                    <form class="contact-form" method="POST" action="<?php echo $link; ?>">
+                        <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">VIEW
+                            PRODUCT</button>
+                    </form>
                     <br>
                 </div>
-                <form class="contact-form" method="POST" action="<?php echo $link; ?>">
-                    <button style="background-color: #02B6ED; width: 100%; height: 50px" type="submit" class="btn btn-large">VIEW
-                        PRODUCT</button>
-                </form>
-                <br>
-            </div>
-        <?php
-         }
+            <?php
+            }
         }
         if ($i == 0) {
-        ?>
+            ?>
             <h1>THERE ARE NO PRODUCTS TO SHOW</h1>
 
         <?php
@@ -348,7 +345,7 @@ class clsProductos
             include "clases/clstipos.php";
             include "clases/clsFechas.php";
             $ob = new clstipos($_SERVER);
-            $obFechas= new clsFechas($_SERVER);
+            $obFechas = new clsFechas($_SERVER);
             ?>
             <div class="form-group">
                 <label for="type">Type: </label>

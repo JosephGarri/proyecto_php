@@ -62,7 +62,7 @@ if (isset($_POST['message'])) {
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="/index/shop.php">Shop</a></li>
                     <li ><a href="/index/productos.php">My products</a></li>
-                    <li><a href="/index/works.php" class="smoothscroll">Works</a></li>
+                    <li><a href="/index/works.php" class="smoothscroll">Administration</a></li>
                     <li style="margin-left: 200px"><a href="/Login/login.php" class="smoothscroll">Logout</a></li>
                 </ul>
             </div>

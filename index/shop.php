@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +46,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/index/shop.php">Shop</a></li>
           <li><a href="/index/productos.php">My products</a></li>
-          <li><a href="/index/works.php" class="smoothscroll">Works</a></li>
+          <li><a href="/index/works.php" class="smoothscroll">Administration</a></li>
           <li style="margin-left: 200px"><a href="/Login/login.php" class="smoothscroll">Logout</a></li>
         </ul>
       </div>
@@ -73,14 +71,32 @@
   <section id="works"></section>
   <div class="container">
     <div class="row centered mt mb">
+      <form class="contact-form " role="form" method="POST">
+        <?php
+        include "clases/clstipos.php";
+        $ob = new clstipos($_SERVER);
+        ?>
+        <label for="tipo">SEARCH</label>
+
+        <div class="form-group">
+          <select class="form-control" name="tipo" onchange="">
+            <option value="null">SELECCIONE UNA CATEGORIA</option>
+            <?php
+            $ob->extraer_tipo_seleccionado($id_tipo);
+            ?>
+          </select>
+
+        </div>
+
+      </form>
       <h1>PRODUCTS</h1>
       <?php
       include "clases/clsProductos.php";
       $ob = new clsProductos($_SERVER);
       $ob->extraer_productos();
-     ?>
+      ?>
     </div>
-    </div>
+  </div>
 
   <div id="copyrights">
     <div class="container">
@@ -90,15 +106,13 @@
       </div>
     </div>
   
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/php-mail-form/validate.js"></script>
 
-
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/php-mail-form/validate.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
 
 </body>
 

@@ -55,7 +55,7 @@ class clsMensajes
 
             $i++;
 ?>
-            <div style="background-color: #EEEEEE; border-style: groove; text-align: left ;" class="col-lg-12 gallery">
+            <div style="background-color: #EEEEEE; border-style: groove; text-align: left ;" class="col-lg-10 col-lg-offset-2 gallery">
                 <div class="form-group">
                     <label>
                         <p>MESSAGE:</p> <?php echo $mensaje; ?>

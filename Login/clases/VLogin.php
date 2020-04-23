@@ -34,6 +34,7 @@ class VLogin
         $i = 0;
         while ($fila = mysqli_fetch_array($ejecutar)) {
            $_SESSION['id_usuario']= $fila['id'];
+           $_SESSION['tipo_usuario']=$fila['tipo'];
             $i++;
                 
         if ($password===$fila['password']) {

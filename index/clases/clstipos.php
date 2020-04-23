@@ -3,7 +3,7 @@ class clstipos
 {
 
 
-  protected $request;
+   protected $request;
    protected $conn;
 
     public function __construct($request)
@@ -69,5 +69,6 @@ class clstipos
    
 
     }
+    
 }
 ?>
