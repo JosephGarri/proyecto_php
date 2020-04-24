@@ -22,7 +22,7 @@ class VLogin
   
     public function verificar(): bool
     {
-      session_start();
+     
        $this->conexion();
 
         $email = $_REQUEST['email'] ?? null;
@@ -42,8 +42,12 @@ class VLogin
         } else {
           session_destroy();
             return true;
-          
         }
-         }
+     
+        }
+        if($i==0){
+          return true;
+          session_destroy();
+        }
     }
 }
